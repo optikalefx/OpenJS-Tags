@@ -1,0 +1,24 @@
+<!--
+	Copywrite Square Bracket LLC - Sean Clark 2012-3012
+	http://square-bracket.com 	
+	http://connect.ai	
+	http://youtube.com/optikalefxx
+-->
+<html>
+	<head>
+		<link rel="stylesheet" href="tags.css">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script type="text/javascript" src="tags.js"></script>
+		<script>
+			$(function() {
+				$("#testInput").tags({
+					unique: true,
+					maxTags: 5
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="text" id="testInput" value="javascript,mysql"/>
+	</body>
+</html>
