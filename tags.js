@@ -6,7 +6,8 @@
 */
 (function($) {
 	$.fn.tags = function(opts) {
-						
+		var selector = this.selector;	
+		//console.log("selector",selector);	
 		// updates the original input					
 		function update($original) {
 			var all = [];
@@ -25,6 +26,8 @@
 				tagsArray = tags.split(","),
 				$ul = $wrapper.find("ul");
 			
+			
+			
 			// make sure have opts
 			if(!opts) opts = {};
 			opts.maxSize = 50;
@@ -35,8 +38,13 @@
 					$ul.append("<li class='tag'><span>"+tag+"</span><a href='#'>x</a></li>");
 				}
 			});
+			
+			
+			// get classes on this element
+			if(opts.classList) $wrapper.addClass(opts.classList);
+			
 			// add input
-			$ul.append("<li class='tags-input'><input type='text'/></li>");
+			$ul.append("<li class='tags-input'><input type='text' class='tags-secret'/></li>");
 			// set to dom
 			$self.after($wrapper);
 			// add the old element
@@ -72,6 +80,7 @@
 			// as we type
 			$wrapper.on("keyup","li input",function(e) {
 				e.preventDefault();
+				$ul = $wrapper.find("ul");
 				var $next = $input.next(),
 					usingAutoFill = $next.hasClass("autofill-bg"),
 					$inputLi = $ul.find("li.tags-input");
